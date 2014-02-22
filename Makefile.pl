@@ -6,10 +6,10 @@ open(ACL,"<ACL");
 close(ACL);
 chomp(@BADREFS);
 
-open(REDIRECT-SITE,"<REDIRECT-SITE");
-@REDIRECT-SITE = <REDIRECT-SITE>;
-close(REDIRECT-SITE);
-chomp(@REDIRECT-SITE);
+open(REDIRECT_SITE,"<REDIRECT-SITE");
+@REDIRECT_SITE = <REDIRECT_SITE>;
+close(REDIRECT_SITE);
+chomp(@REDIRECT_SITE);
 
 ############################################################################
 #                       Create the Javascript blocker                      #
@@ -53,9 +53,9 @@ for (i = 0; i < badRefs.length; ++i)
 EOF
 
 print(JS "        window.location.href = \"");
-print(JS @REDIRECT-SITE);
-print(JS "\"\;");
-print(JS,'}');
-print(JS,"\n");
+print(JS @REDIRECT_SITE);
+print(JS "\"\;\n");
+print(JS '}');
+print(JS "\n");
 
 close(JS);
