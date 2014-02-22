@@ -1,8 +1,19 @@
 #!/usr/bin/perl
 
+
+
+open(ACL,"<ACL");
+@BADREFS= <ACL>;
+close(ACL);
+chomp(@BADREFS);
+
 ############################################################################
-#                         Backup Old blocklists                            #
+#                       Create the Javascript blocker                      #
 ############################################################################
+
+#-------------------------------------------------------#
+#          Backup Old Javascript blocklist              #
+#-------------------------------------------------------#
 open(JS,"<javascript/nohate.js");
 @JS = <JS>;
 close(JS);
@@ -11,24 +22,21 @@ print(JSBAK @JS);
 close(JSBAK);
 
 
-open(ACL,"<ACL");
-@BADREFS= <ACL>;
-close(ACL);
-chomp(@BADREFS);
+open(JS,">javascript/nohate.js");
 
-print('var badRefs=new Array(');
-print("\n");
+print(JS 'var badRefs=new Array(');
+print(JS "\n");
 $len = scalar(@BADREFS);
 for ($i=0; $i<($len -1); $i++)
 {
-    print($BADREFS[$i]);
-    print(',');
-    print("\n");
+    print(JS $BADREFS[$i]);
+    print(JS ',');
+    print(JS "\n");
 }
-print($BADREFS[$len]);
-print("\n");
+print(JS $BADREFS[$len]);
+print(JS "\n");
 
-print << 'EOF';
+print JS << 'EOF';
 );
 
 var i;
@@ -41,3 +49,5 @@ for (i = 0; i < badRefs.length; ++i)
         window.location.href = "https://en.wikipedia.org/wiki/Transphobia";
 }
 EOF
+
+close(JS);
