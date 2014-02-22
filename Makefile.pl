@@ -1,11 +1,15 @@
 #!/usr/bin/perl
 
 
-
 open(ACL,"<ACL");
 @BADREFS= <ACL>;
 close(ACL);
 chomp(@BADREFS);
+
+open(REDIRECT-SITE,"<REDIRECT-SITE");
+@REDIRECT-SITE = <REDIRECT-SITE>;
+close(REDIRECT-SITE);
+chomp(@REDIRECT-SITE);
 
 ############################################################################
 #                       Create the Javascript blocker                      #
@@ -46,8 +50,12 @@ for (i = 0; i < badRefs.length; ++i)
     ref = badRefs[i];
     var BAD = ref.exec(document.referrer);
     if (BAD)  
-        window.location.href = "https://en.wikipedia.org/wiki/Transphobia";
-}
 EOF
+
+print(JS "        window.location.href = \"");
+print(JS @REDIRECT-SITE);
+print(JS "\"\;");
+print(JS,'}');
+print(JS,"\n");
 
 close(JS);
