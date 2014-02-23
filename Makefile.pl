@@ -5,6 +5,13 @@ open(ACL,"<ACL");
 @BADREFS= <ACL>;
 close(ACL);
 chomp(@BADREFS);
+foreach (@BADREFS)
+{
+   $_ =~ s/^http:\/\///;
+   $_ =~ s/\//\\\//;
+}
+    
+    
 
 open(REDIRECT_SITE,"<REDIRECT-SITE");
 @REDIRECT_SITE = <REDIRECT_SITE>;
@@ -33,11 +40,14 @@ print(JS "\n");
 $len = scalar(@BADREFS);
 for ($i=0; $i<($len -1); $i++)
 {
+    print(JS '/[http|https]:\/\/');
     print(JS $BADREFS[$i]);
+    print(JS '/i');
     print(JS ',');
     print(JS "\n");
 }
 print(JS $BADREFS[$len]);
+print(JS '/i');
 print(JS "\n");
 
 print JS << 'EOF';
