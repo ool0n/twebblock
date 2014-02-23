@@ -7,7 +7,8 @@ close(ACL);
 chomp(@BADREFS);
 foreach (@BADREFS)
 {
-   $_ =~ s/^http:\/\///;
+   $_ =~ s/^http:\/\///i;
+   $_ =~ s/^https:\/\///i;
    $_ =~ s/\//\\\//;
 }
     
