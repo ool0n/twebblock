@@ -48,7 +48,6 @@ for ($i=0; $i<($len -1); $i++)
     print(JS "\n");
 }
 print(JS $BADREFS[$len]);
-print(JS '/i');
 print(JS "\n");
 
 print JS << 'EOF';
