@@ -2,15 +2,23 @@
 
 
 open(ACL,"<ACL");
-@BADREFS= <ACL>;
+@BR= <ACL>;
 close(ACL);
-chomp(@BADREFS);
-foreach (@BADREFS)
+chomp(@BR);
+foreach (@BR)
 {
    $_ =~ s/^http:\/\///i;
    $_ =~ s/^https:\/\///i;
    $_ =~ s/\//\\\//;
-   $_ =~ s/^$//;
+   if (/^$/)
+   {
+       next;
+   }
+   if (/^#/)
+   {
+       next;
+   }
+   push (@BADREFS, $_);
 }
     
     
@@ -40,7 +48,7 @@ open(JS,">javascript/nohate.js");
 print(JS 'var badRefs=new Array(');
 print(JS "\n");
 $len = scalar(@BADREFS);
-for ($i=0; $i<($len -1); $i++)
+for ($i=0; $i<=($len -2); $i++)
 {
     print(JS '/[http|https]:\/\/');
     print(JS $BADREFS[$i]);
@@ -48,8 +56,8 @@ for ($i=0; $i<($len -1); $i++)
     print(JS ',');
     print(JS "\n");
 }
-print(JS $BADREFS[$len]);
-print(JS "\n");
+print(JS '/[http|https]:\/\/');
+print(JS "$BADREFS[$len-1]/i\n");
 
 print JS << 'EOF';
 );

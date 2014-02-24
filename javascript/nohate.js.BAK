@@ -37,7 +37,7 @@ var badRefs=new Array(
 /[http|https]:\/\/www.feministes-radicales.org/i,
 /[http|https]:\/\/firewomon.wordpress.com/i,
 /[http|https]:\/\/guerillafeminism.wordpress.com/i,
-/i
+FOO: deepgreenresistance.org/i
 );
 
 var i;
