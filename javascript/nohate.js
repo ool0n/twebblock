@@ -1,6 +1,6 @@
 var badRefs=new Array(
-/[http|https]:\/\/e271.net\/~marina/STAR/twebblock/javascript/referrer-bad.html/i,
-/[http|https]:\/\/e271.net\/~marina/STAR/twebblock/javascript/BAD/i,
+/[http|https]:\/\/e271.net\/~marina\/STAR\/twebblock\/javascript\/referrer-bad.html/i,
+/[http|https]:\/\/e271.net\/~marina\/STAR\/twebblock\/javascript\/BAD/i,
 /[http|https]:\/\/bugbrennan.com/i,
 /[http|https]:\/\/genderidentitywatch.com/i,
 /[http|https]:\/\/gendertrender.wordpress.com/i,
