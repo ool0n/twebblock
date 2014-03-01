@@ -12,7 +12,7 @@
 */
 class referrer_widget extends WP_Widget {
 	function __construct() {
-		parent::__construct(false, $name = __('referrer));
+		parent::__construct(false, $name = __('referrer'));
 	}
 	function form() {
 	}
